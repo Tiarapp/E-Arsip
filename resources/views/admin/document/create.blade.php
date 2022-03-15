@@ -14,7 +14,7 @@
     <div class="content-header">
         <div class="row" id="form_list_mc">
             <div class="col-md-5">
-                <h4 class="modal-title">Tambah Jenis Dokumen</h4>
+                <h4 class="modal-title">Tambah Box</h4>
                 <hr>
                 @if ($errors->any())
                 <div class="alert alert-danger">
