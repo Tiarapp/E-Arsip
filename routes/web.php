@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/',                          'TampilanController@index');
+Route::get('/index',                          'TampilanController@index');
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/jenis-dokumen', 'CategoryController@index')->name('jenis-dokumen');
-Route::get('/jenis-dokumen/create', 'CategoryController@create')->name('category.create');
-Route::post('/jenis-dokumen/store', 'CategoryController@store')->name('category.store');
-Route::get('/jenis-dokumen/edit/{id}', 'CategoryController@edit')->name('category.edit');
-
-require __DIR__.'/auth.php';
+Route::get('/user/klien_add',   'UserController@add_klien');
