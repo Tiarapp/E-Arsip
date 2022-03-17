@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
+use App\Models\klien;
 
 class UserController extends Controller
 {
@@ -13,16 +16,38 @@ class UserController extends Controller
      */
     public function index_klien()
     {
-        //
+        $klien=klien::all()
+                    ->sortby('nama');
+
+        return view('/user/klien', compact('klien'));
     }
-    public function create_klien()
+    public function create_klien($id)
     {
-        //
+        $klien=klien::find($id);
+        return view('/user/klien_add', compact('klien', 'id'));
     }
 
-    public function add_klien()
+    public function add_klien(Request $request, $id)
     {
-        return view('/user/klien_add');
+        $klien = klien::updateOrCreate(
+            ['id' => $id],
+            ['user_id'  => 1,
+            'nama'      => $request->nama,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jenis_kel' => $request->jenis_kel,
+            'alamat'    => $request->alamat,
+            'tgl_msk'   => $request->tgl_msk,
+            'keterangan'=>$request->keterangan]
+        );
+
+        return redirect('/user/klien')->with('succes','Data Berhasil di Input');
+    }
+
+    public function delete_klien($id)
+    {
+        $klien = klien::findOrFail($id);
+        $klien->delete();
+        return redirect('/user/klien')->with('succes','Data Berhasil di Hapus');
     }
 
     /**
