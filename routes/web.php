@@ -17,3 +17,7 @@ Route::get('/',                          'TampilanController@index');
 Route::get('/index',                          'TampilanController@index');
 
 Route::get('/user/klien_add',   'UserController@add_klien');
+
+Route::get('/login', function(){
+    return view('auth.login');
+});
