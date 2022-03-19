@@ -28,6 +28,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Foto</th>
                                 <th>Nama</th>
                                 <th>Tanggal Masuk </th>
                                 <th>Keterangan</th>
@@ -37,10 +38,13 @@
                         <tbody>
                             @foreach ($klien as $k)
                                 <tr>
-                                    <td>{{$p->id}}</td>
-                                    <td>{{$p->nama}}</td>
-                                    <td>{{$p->tgl_msk}}</td>
-                                    <td>{{$p->keterangan}}</td>
+                                    <td>
+                                        <img class="d-flex align-self-start mr-3" src="{{asset('foto/'.$k->foto)}}" alt="Generic placeholder image" height="64">
+                                    </td>
+                                    <td>{{$k->id}}</td>
+                                    <td>{{$k->nama}}</td>
+                                    <td>{{$k->tgl_msk}}</td>
+                                    <td>{{$k->keterangan}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

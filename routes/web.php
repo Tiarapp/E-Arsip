@@ -19,9 +19,9 @@ Route::get('/index',            'TampilanController@index');
 // KLIEN
 Route::get('/user/klien',               'UserController@index_klien');
 Route::get('/user/klien_add/{id}',      'UserController@create_klien');
-Route::post('/user/klien_create/{id}',    'UserController@add_klien');
-Route::post('/user/klien_create/{id}',    'UserController@add_klien');
-Route::get('/user/klien_delete/{id}',    'UserController@delete_klien');
+Route::post('/user/klien_create/{id}',  'UserController@add_klien');
+Route::get('/user/klien_view/{id}',     'UserController@view_klien');
+Route::get('/user/klien_delete/{id}',   'UserController@delete_klien');
 
 Route::get('/login', function(){
     return view('auth.login');

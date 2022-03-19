@@ -137,9 +137,9 @@ code {
 }
 
 .footer {
-  background-color: #999999;
+  background-color: #ffffff;
   bottom: 0;
-  color: #ffffff;
+  color: #2d3b48;
   text-align: center;
   padding: 20px 30px;
   position: absolute;
@@ -700,8 +700,7 @@ code {
 }
 
 .text-muted {
-    color: #000000 !important;
-    margin-top: 25px;
+  color: #707070 !important;
 }
 
 .text-primary {
@@ -2600,7 +2599,7 @@ label {
 }
 
 .form-control {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .form-control:focus {
@@ -3244,7 +3243,7 @@ File: Menu
 
 .topbar-left div:first-child {
   height: 71px;
-  background-color: #000000;
+  background-color: #3f51b5;
 }
 
 .has_sub.nav-active i.mdi-chevron-right:before {
@@ -3252,7 +3251,7 @@ File: Menu
 }
 
 .navbar-custom {
-  background-color: #999999;
+  background-color: #4558be;
   border: none;
   margin: -20px 0 0 -25px;
   position: fixed;
