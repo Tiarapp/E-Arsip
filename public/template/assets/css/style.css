@@ -700,7 +700,8 @@ code {
 }
 
 .text-muted {
-  color: #707070 !important;
+    color: #000000 !important;
+    margin-top: 25px;
 }
 
 .text-primary {
@@ -2599,7 +2600,7 @@ label {
 }
 
 .form-control {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 .form-control:focus {
