@@ -85,9 +85,9 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-animation"></i><span> Dokumen </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="/user/dokumen_add/"> Dokumen Surat</a></li>
-                                        <li><a href="tables-datatable.html"> Dokumen Aset</a></li>
-                                        <li><a href="tables-datatable.html"> Dokumen Keuangan</a></li>
+                                        <li><a href="/user/dokumen_surat/"> Dokumen Surat</a></li>
+                                        <li><a href="/user/dokumen_aset/"> Dokumen Aset</a></li>
+                                        <li><a href="/user/dokumen_keuangan/"> Dokumen Keuangan</a></li>
                                     </ul>
                                 </li>
 

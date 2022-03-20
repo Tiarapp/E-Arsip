@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\klien;
+use App\Models\dokumen;
 
 class UserController extends Controller
 {
@@ -22,6 +23,7 @@ class UserController extends Controller
 
             return view('/user/klien', compact('klien'));
         }
+
         public function create_klien($id)
         {
             $klien=klien::find($id);
@@ -31,7 +33,6 @@ class UserController extends Controller
         public function add_klien(Request $request, $id)
         {
             $messages = [
-                'foto.required'    =>  'File Foto Belum di pilih',
                 'foto.mimes'        =>  'Upload foto Hanya File dengan type JPEG, PNG, dan JPG',
                 'foto.max'          =>  'Maksimal File foto Berukuran 3 Mb',
             ];
@@ -86,13 +87,67 @@ class UserController extends Controller
         }
 
     // Dokumen
-        public function index_dokumen()
-        {
-            $klien=klien::all()
-                        ->sortby('nama');
+        // SURAT
+            public function index_surat()
+            {
+                $dokumen=dokumen::where('jns_dokumen_id', 1)
+                                ->orderby('nm')
+                                ->get();
 
-            return view('/user/klien', compact('klien'));
-        }
+                return view('/user/dokumen_surat', compact('dokumen'));
+            }
+
+            public function create_surat($id)
+            {
+                $dokumen=dokumen::find($id);
+                return view('/user/dokumen_surat_add', compact('dokumen', 'id'));
+            }
+
+            public function add_surat(Request $request, $id)
+            {
+                // $messages = [
+                //     'file.mimes'        =>  'Upload file Hanya File dengan type JPEG, PNG, dan JPG',
+                //     'file.max'          =>  'Maksimal File file Berukuran 3 Mb',
+                // ];
+                // $this->validate($request,[
+
+                //     'file'              => 'required|file|mimes:jpeg,png,jpg|max: 3072',
+                // ],$messages);
+
+                if ($request->file == NULL) {
+
+                    $nama_file=NULL;
+                } else {
+
+                    $file = $request->file('file');
+                    $nama_file = time()."_".$file->getClientOriginalName();
+                }
+
+                $dokumen = dokumen::updateOrCreate(
+                    ['id' => $id],
+                    ['user_id'          => 1,
+                    'jns_dokumen_id'    => 1,
+                    'nm'                => $request->nm,
+                    'deskripsi'         => $request->deskripsi,
+                    'file'              => $nama_file]
+                );
+
+                if ($request->file == NULL) {
+                } else {
+
+                    $tujuan_upload = 'file';
+                    $file->move($tujuan_upload,$nama_file);
+                }
+
+                return redirect('/user/dokumen_surat');
+            }
+
+            public function delete_surat($id)
+            {
+                $dokumen = dokumen::findOrFail($id);
+                $dokumen->delete();
+                return redirect('/user/dokumen_surat')->with('succes','Data Berhasil di Hapus');
+            }
 
     /**
      * Show the form for creating a new resource.
