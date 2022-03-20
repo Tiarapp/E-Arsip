@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\klien;
+use App\Models\jns_dokumen;
 use App\Models\dokumen;
 
 class UserController extends Controller
@@ -235,7 +236,7 @@ class UserController extends Controller
                     'jns_dokumen_id'    => 2,
                     'nm'                => $request->nm,
                     'jml'               => $request->jml,
-                    'keterangan'        => $request->keterangan]
+                    'deskripsi'         => $request->keterangan]
                 );
 
                 return redirect('/user/dokumen_aset')->with('succes','Data Berhasil di Simpan');
@@ -246,6 +247,65 @@ class UserController extends Controller
                 $dokumen = dokumen::findOrFail($id);
                 $dokumen->delete();
                 return redirect('/user/dokumen_aset')->with('succes','Data Berhasil di Hapus');
+            }
+
+        // LAIN
+            public function index_lain()
+            {
+                $dokumen=dokumen::where('jns_dokumen_id', '>', 3)
+                                ->orderby('jns_dokumen_id')
+                                ->orderby('nm')
+                                ->get();
+
+                return view('/user/dokumen_lain', compact( 'dokumen'));
+            }
+
+            public function create_lain($id)
+            {
+                $jns_dokumen=jns_dokumen::where('id', '>', 3)
+                                        ->get();
+
+                $dokumen=dokumen::find($id);
+                return view('/user/dokumen_lain_add', compact('jns_dokumen', 'dokumen', 'id'));
+            }
+
+            public function add_lain(Request $request, $id)
+            {
+
+                if ($request->file == NULL) {
+
+                    $nama_file=NULL;
+                } else {
+
+                    $file = $request->file('file');
+                    $nama_file = time()."_".$file->getClientOriginalName();
+                }
+
+                $dokumen = dokumen::updateOrCreate(
+                    ['id' => $id],
+                    ['user_id'          => 1,
+                    'jns_dokumen_id'    => $request->jns,
+                    'nm'                => $request->nm,
+                    'jml'               => $request->jml,
+                    'deskripsi'         => $request->keterangan,
+                    'file'              => $nama_file]
+                );
+
+                if ($request->file == NULL) {
+                } else {
+
+                    $tujuan_upload = 'lain-lain';
+                    $file->move($tujuan_upload,$nama_file);
+                }
+
+                return redirect('/user/dokumen_lain')->with('succes','Data Berhasil di Simpan');
+            }
+
+            public function delete_lain($id)
+            {
+                $dokumen = dokumen::findOrFail($id);
+                $dokumen->delete();
+                return redirect('/user/dokumen_lain')->with('succes','Data Berhasil di Hapus');
             }
 
     /**

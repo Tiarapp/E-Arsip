@@ -9,7 +9,6 @@
     <link href="{{asset('/template/assets/plugins/colorpicker/asColorPicker.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('/template/assets/plugins/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
 
-
     <link href="{{asset('/template/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 
     <style>
@@ -21,15 +20,15 @@
 @endsection
 
 @section('page_awal')
-    <a href="/user/dokumen_keuangan">Dokumen Aset</a>
+    <a href="/user/dokumen_keuangan">Dokumen Lain</a>
 @endsection
 
 @section('page_aktif')
-    Tambah dokumen aset
+    Tambah dokumen lain
 @endsection
 
 @section('page_title')
-    Dokumen Aset
+    Dokumen Lain
 @endsection
 
 @section('conten')
@@ -48,17 +47,35 @@
             <div class="card m-b-30">
                 <div class="card-body">
 
-                    <h4 class="mt-0 header-title">Tambah Dokumen Aset</h4>
+                    <h4 class="mt-0 header-title">Tambah Dokumen Lain</h4>
 
-                    <form class="mb-0" action="/user/dokumen_aset_create/{{$id}}" method="post">
+                    <form class="mb-0" action="/user/dokumen_lain_create/{{$id}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="row form-material">
 
                             <input type="hidden" name="id" value="{{$dokumen->id ?? ''}}">
                             <div class="col-md-12">
-                                <h6 class="text-muted">Jenis Barang</h6>
-                                <input type="text" name="nm" class="form-control" value="{{$dokumen->nm ?? ''}}"  placeholder="Jenis Barang"/>
+                                <h6 class="text-muted">Jenis Dokumen</h6>
+                                <select class="select2 form-control mb-3 custom-select" name="jns" style="width: 100%; height:36px;" required>
+                                    @if (empty($dokumen->jns_dokumen_id))
+
+                                        <option value="" selected>Pilih Jenis Dokumen</option>
+                                        @foreach ($jns_dokumen as $jd)
+                                            <option value="{{$jd->id}}">{{$jd->jns_dokumen}}</option>
+                                        @endforeach
+                                    @else
+
+                                        @foreach ($jns_dokumen as $jd)
+                                            <option value="{{$jd->id}}" @if ($dokumen->jns_dokumen_id==$jd->id) selected @endif>{{$jd->jns_dokumen}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="col-md-12">
+                                <h6 class="text-muted">Nama Dokumen / Barang</h6>
+                                <input type="text" name="nm" class="form-control" value="{{$dokumen->nm ?? ''}}"  placeholder="Nama Dokumen / Barang"/>
                             </div>
 
                             <div class="col-md-12">
@@ -69,6 +86,14 @@
                             <div class="col-md-12">
                                 <h6 class="text-muted">Keterangan</h6>
                                 <textarea id="textarea" name="keterangan" class="form-control" maxlength="225" rows="3" placeholder="Maksimal hanya 255 huruf" >{{$dokumen->deskripsi ?? ''}}</textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <h6 class="text-muted">Upload File</h6>
+                                <input type="file" class="form-control-file" id="exampleInputFile" name="file" value="{{$dokumen->file ?? ''}}">
+                                {{-- <small class="text-muted">
+                                    Hanya File jpg, png, jpeg, ukuran file maksimal 3Mb
+                                </small> --}}
                             </div>
 
                         </div>

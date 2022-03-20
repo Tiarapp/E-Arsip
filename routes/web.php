@@ -42,6 +42,12 @@ Route::get('/index',            'TampilanController@index');
         Route::post('/user/dokumen_aset_create/{id}',  'UserController@add_aset');
         Route::get('/user/dokumen_aset_delete/{id}',   'UserController@delete_aset');
 
+    // DOKUMEN LAIN
+        Route::get('/user/dokumen_lain',               'UserController@index_lain');
+        Route::get('/user/dokumen_lain_add/{id}',      'UserController@create_lain');
+        Route::post('/user/dokumen_lain_create/{id}',  'UserController@add_lain');
+        Route::get('/user/dokumen_lain_delete/{id}',   'UserController@delete_lain');
+
 Route::get('/login', function(){
     return view('auth.login');
 });
