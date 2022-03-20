@@ -13,14 +13,14 @@
 @endsection
 
 @section('page_aktif')
-    dokumen aset
+    dokumen lain-lain
 @endsection
 
 @section('page_title')
     @php
         $id=0;
     @endphp
-    Dokumen Aset <a href="/user/dokumen_aset_add/{{$id}}"><button>+</button></a>
+    Dokumen Lain-Lain <a href="/user/dokumen_lain_add/{{$id}}"><button>+</button></a>
 @endsection
 
 @section('conten')
@@ -50,7 +50,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Jenis Barang</th>
+                                <th>Jenis Dokumen</th>
+                                <th>Nama</th>
                                 <th>Jumlah</th>
                                 <th>Keterangan</th>
                                 <th>Option</th>
@@ -61,16 +62,17 @@
                             @foreach ($dokumen as $d)
                                 <tr>
                                     <td>{{$d->id}}</td>
+                                    <td>{{$d->id_jns_dokumen->jns_dokumen}}</td>
                                     <td>{{$d->nm}}</td>
                                     <td>{{$d->jml}}</td>
                                     <td>{{$d->deskripsi}}</td>
                                     <td style="text-align: center">
-                                        <a href="/user/dokumen_aset_add/{{$d->id}}">
+                                        <a href="/user/dokumen_lain_add/{{$d->id}}">
                                             <button type="button" class="btn btn-primary bmd-btn-icon">
                                                 <i class="mdi mdi-lead-pencil"></i>
                                             </button>
                                         </a>
-                                        <a href="/user/dokumen_aset_delete/{{$d->id}}">
+                                        <a href="/user/dokumen_lain_delete/{{$d->id}}">
                                             <button type="button" class="btn btn-primary bmd-btn-icon">
                                                 <i class="mdi mdi-delete"></i>
                                             </button>

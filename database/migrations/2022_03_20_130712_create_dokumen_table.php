@@ -21,7 +21,6 @@ class CreateDokumenTable extends Migration
             $table->string('nm')->nullable();
             $table->string('deskripsi')->nullable();
             $table->integer('jml')->nullable();
-            $table->string('keterangan')->nullable();
             $table->string('file')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
