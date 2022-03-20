@@ -13,14 +13,14 @@
 @endsection
 
 @section('page_aktif')
-    dokumen surat
+    dokumen aset
 @endsection
 
 @section('page_title')
     @php
         $id=0;
     @endphp
-    Dokumen Surat <a href="/user/dokumen_surat_add/{{$id}}"><button>+</button></a>
+    Dokumen Aset <a href="/user/dokumen_keuangan_add/{{$id}}"><button>+</button></a>
 @endsection
 
 @section('conten')
@@ -65,12 +65,12 @@
                                     <td>{{$d->deskripsi}}</td>
                                     <td>{{$d->created_at->format('d-m-Y')}}</td>
                                     <td style="text-align: center">
-                                        <a href="/user/dokumen_surat_add/{{$d->id}}">
+                                        <a href="/user/dokumen_keuangan_add/{{$d->id}}">
                                             <button type="button" class="btn btn-primary bmd-btn-icon">
                                                 <i class="mdi mdi-lead-pencil"></i>
                                             </button>
                                         </a>
-                                        <a href="/user/dokumen_surat_delete/{{$d->id}}">
+                                        <a href="/user/dokumen_keuangan_delete/{{$d->id}}">
                                             <button type="button" class="btn btn-primary bmd-btn-icon">
                                                 <i class="mdi mdi-delete"></i>
                                             </button>
