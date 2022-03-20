@@ -13,7 +13,9 @@
     <link href="{{asset('/template/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 
     <style>
-
+        .col-md-12{
+            margin-top: 10px;
+        }
     </style>
 
 @endsection
@@ -31,7 +33,16 @@
 @endsection
 
 @section('conten')
-
+    @if(count($errors) > 0)
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            @foreach ($errors->all() as $error)
+                <strong>{{ $error }}</strong>
+            @endforeach
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <div class="card m-b-30">
@@ -39,7 +50,7 @@
 
                     <h4 class="mt-0 header-title">Tambah Data Klien</h4>
 
-                    <form class="mb-0" action="/user/klien_create/{{$id}}" method="post">
+                    <form class="mb-0" action="/user/klien_create/{{$id}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="row form-material">
@@ -96,6 +107,14 @@
                             <div class="col-md-12">
                                 <h6 class="text-muted">Keterangan</h6>
                                 <textarea id="textarea" name="keterangan" class="form-control" maxlength="225" rows="3" placeholder="Maksimal hanya 255 huruf" required>{{$klien->keterangan ?? ''}}</textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <h6 class="text-muted">Upload Foto</h6>
+                                <input type="file" class="form-control-file" id="exampleInputFile" name="foto">
+                                <small class="text-muted">
+                                    Hanya File jpg, png, jpeg, ukuran file maksimal 3Mb
+                                </small>
                             </div>
                         </div>
 
