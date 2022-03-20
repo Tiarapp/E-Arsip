@@ -9,5 +9,5 @@ class jns_dokumen extends Model
 {
     use HasFactory;
     protected $table ='jns_dokumen';
-    protected $fillable = [ 'id', 'user_id', 'jns_dokumen', 'menu'];
+    protected $fillable = [ 'id', 'user_id', 'jns_dokumen_id', 'nm', 'deskripsi', 'jml', 'keterangan', 'file', 'created_at', 'updated_at'];
 }

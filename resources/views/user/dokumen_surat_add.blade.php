@@ -21,15 +21,15 @@
 @endsection
 
 @section('page_awal')
-    <a href="/user/klien">Data Klien</a>
+    <a href="/user/dokumen_surat">Dokumen Surat</a>
 @endsection
 
 @section('page_aktif')
-    Tambah data klien
+    Tambah dokumen surat
 @endsection
 
 @section('page_title')
-    Data Klien
+    Dokumen Surat
 @endsection
 
 @section('conten')
@@ -48,73 +48,30 @@
             <div class="card m-b-30">
                 <div class="card-body">
 
-                    <h4 class="mt-0 header-title">Tambah Data Klien</h4>
+                    <h4 class="mt-0 header-title">Tambah Dokumen Surat</h4>
 
-                    <form class="mb-0" action="/user/klien_create/{{$id}}" method="post" enctype="multipart/form-data">
+                    <form class="mb-0" action="/user/dokumen_surat_create/{{$id}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="row form-material">
 
-                            <input type="hidden" name="id" value="{{$klien->id ?? ''}}">
+                            <input type="hidden" name="id" value="{{$dokumen->id ?? ''}}">
                             <div class="col-md-12">
-                                <h6 class="text-muted">Nama Klien</h6>
-                                <input type="text" name="nama" class="form-control" value="{{$klien->nama ?? ''}}" required placeholder="Nama Klien"/>
+                                <h6 class="text-muted">Nama Dokumen</h6>
+                                <input type="text" name="nm" class="form-control" value="{{$dokumen->nm ?? ''}}"  placeholder="Nama Dokumen Surat"/>
                             </div>
 
                             <div class="col-md-12">
-                                <h6 class="text-muted">Tanggal Lahir</h6>
-                                @if (empty($klien->tgl_lahir))
-
-                                    <input type="date" class="form-control" name="tgl_lahir" placeholder="2017-06-04" id="mdate" required>
-                                @else
-
-                                    <input type="date" class="form-control" name="tgl_lahir" value="{{$klien->tgl_lahir->format('Y-m-d')}}" placeholder="2017-06-04" id="mdate" required>
-                                @endif
+                                <h6 class="text-muted">Deskripsi</h6>
+                                <textarea id="textarea" name="deskripsi" class="form-control" maxlength="225" rows="3" placeholder="Maksimal hanya 255 huruf" >{{$dokumen->deskripsi ?? ''}}</textarea>
                             </div>
 
                             <div class="col-md-12">
-                                <h6 class="text-muted">Jenis Kelamin</h6>
-                                <select class="select2 form-control mb-3 custom-select" name="jenis_kel" style="width: 100%; height:36px;" required>
-                                    @if (empty($klien->tgl_lahir))
-
-                                        <option value="" selected>Pilih Jenis Kelamin</option>
-                                        <option value="Laki-Laki">Laki-Laki</option>
-                                        <option value="Perempuan">Perempuan</option>
-                                    @else
-                                        <option value="" @if ($klien->jenis_kel=="") selected @endif>Pilih Jenis Kelamin</option>
-                                        <option value="Laki-Laki" @if ($klien->jenis_kel=="Laki-Laki") selected @endif>Laki-Laki</option>
-                                        <option value="Perempuan" @if ($klien->jenis_kel=="Perempuan") selected @endif>Perempuan</option>
-                                    @endif
-                                </select>
-                            </div>
-
-                            <div class="col-md-12">
-                                <h6 class="text-muted">Asal Usul Alamat</h6>
-                                <textarea id="textarea" name="alamat" class="form-control" maxlength="225" rows="3" placeholder="Maksimal hanya 255 huruf" required>{{$klien->alamat ?? ''}}</textarea>
-                            </div>
-
-                            <div class="col-md-12">
-                                <h6 class="text-muted">Tanggal Masuk</h6>
-                                @if (empty($klien->tgl_msk))
-
-                                    <input type="date" class="form-control" name="tgl_msk" placeholder="2017-06-04" id="mdate" required>
-                                @else
-
-                                    <input type="date" class="form-control" name="tgl_msk" value="{{$klien->tgl_msk}}" placeholder="2017-06-04" id="mdate" required>
-                                @endif
-                            </div>
-
-                            <div class="col-md-12">
-                                <h6 class="text-muted">Keterangan</h6>
-                                <textarea id="textarea" name="keterangan" class="form-control" maxlength="225" rows="3" placeholder="Maksimal hanya 255 huruf" required>{{$klien->keterangan ?? ''}}</textarea>
-                            </div>
-
-                            <div class="col-md-12">
-                                <h6 class="text-muted">Upload Foto</h6>
-                                <input type="file" class="form-control-file" id="exampleInputFile" name="foto" value="{{$klien->foto ?? ''}}">
-                                <small class="text-muted">
+                                <h6 class="text-muted">Upload File</h6>
+                                <input type="file" class="form-control-file" id="exampleInputFile" name="file" value="{{$dokumen->file ?? ''}}">
+                                {{-- <small class="text-muted">
                                     Hanya File jpg, png, jpeg, ukuran file maksimal 3Mb
-                                </small>
+                                </small> --}}
                             </div>
                         </div>
 

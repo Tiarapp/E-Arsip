@@ -18,7 +18,6 @@ class CreateJnsDokumenTable extends Migration
 
             $table->foreignId('user_id');
             $table->string('jns_dokumen')->nullable();
-            $table->string('menu')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
