@@ -135,7 +135,7 @@ class UserController extends Controller
                 if ($request->file == NULL) {
                 } else {
 
-                    $tujuan_upload = 'file';
+                    $tujuan_upload = 'surat';
                     $file->move($tujuan_upload,$nama_file);
                 }
 
@@ -147,6 +147,130 @@ class UserController extends Controller
                 $dokumen = dokumen::findOrFail($id);
                 $dokumen->delete();
                 return redirect('/user/dokumen_surat')->with('succes','Data Berhasil di Hapus');
+            }
+
+        // KEUANGAN
+            public function index_keuangan()
+            {
+                $dokumen=dokumen::where('jns_dokumen_id', 3)
+                                ->orderby('nm')
+                                ->get();
+
+                return view('/user/dokumen_keuangan', compact('dokumen'));
+            }
+
+            public function create_keuangan($id)
+            {
+                $dokumen=dokumen::find($id);
+                return view('/user/dokumen_keuangan_add', compact('dokumen', 'id'));
+            }
+
+            public function add_keuangan(Request $request, $id)
+            {
+                // $messages = [
+                //     'file.mimes'        =>  'Upload file Hanya File dengan type JPEG, PNG, dan JPG',
+                //     'file.max'          =>  'Maksimal File file Berukuran 3 Mb',
+                // ];
+                // $this->validate($request,[
+
+                //     'file'              => 'required|file|mimes:jpeg,png,jpg|max: 3072',
+                // ],$messages);
+
+                if ($request->file == NULL) {
+
+                    $nama_file=NULL;
+                } else {
+
+                    $file = $request->file('file');
+                    $nama_file = time()."_".$file->getClientOriginalName();
+                }
+
+                $dokumen = dokumen::updateOrCreate(
+                    ['id' => $id],
+                    ['user_id'          => 1,
+                    'jns_dokumen_id'    => 3,
+                    'nm'                => $request->nm,
+                    'deskripsi'         => $request->deskripsi,
+                    'file'              => $nama_file]
+                );
+
+                if ($request->file == NULL) {
+                } else {
+
+                    $tujuan_upload = 'keuangan';
+                    $file->move($tujuan_upload,$nama_file);
+                }
+
+                return redirect('/user/dokumen_keuangan');
+            }
+
+            public function delete_keuangan($id)
+            {
+                $dokumen = dokumen::findOrFail($id);
+                $dokumen->delete();
+                return redirect('/user/dokumen_keuangan')->with('succes','Data Berhasil di Hapus');
+            }
+
+        // ASET
+            public function index_aset()
+            {
+                $dokumen=dokumen::where('jns_dokumen_id', 3)
+                                ->orderby('nm')
+                                ->get();
+
+                return view('/user/dokumen_aset', compact('dokumen'));
+            }
+
+            public function create_aset($id)
+            {
+                $dokumen=dokumen::find($id);
+                return view('/user/dokumen_aset_add', compact('dokumen', 'id'));
+            }
+
+            public function add_aset(Request $request, $id)
+            {
+                // $messages = [
+                //     'file.mimes'        =>  'Upload file Hanya File dengan type JPEG, PNG, dan JPG',
+                //     'file.max'          =>  'Maksimal File file Berukuran 3 Mb',
+                // ];
+                // $this->validate($request,[
+
+                //     'file'              => 'required|file|mimes:jpeg,png,jpg|max: 3072',
+                // ],$messages);
+
+                if ($request->file == NULL) {
+
+                    $nama_file=NULL;
+                } else {
+
+                    $file = $request->file('file');
+                    $nama_file = time()."_".$file->getClientOriginalName();
+                }
+
+                $dokumen = dokumen::updateOrCreate(
+                    ['id' => $id],
+                    ['user_id'          => 1,
+                    'jns_dokumen_id'    => 3,
+                    'nm'                => $request->nm,
+                    'deskripsi'         => $request->deskripsi,
+                    'file'              => $nama_file]
+                );
+
+                if ($request->file == NULL) {
+                } else {
+
+                    $tujuan_upload = 'aset';
+                    $file->move($tujuan_upload,$nama_file);
+                }
+
+                return redirect('/user/dokumen_aset');
+            }
+
+            public function delete_aset($id)
+            {
+                $dokumen = dokumen::findOrFail($id);
+                $dokumen->delete();
+                return redirect('/user/dokumen_aset')->with('succes','Data Berhasil di Hapus');
             }
 
     /**

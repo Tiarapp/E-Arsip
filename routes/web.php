@@ -30,6 +30,18 @@ Route::get('/index',            'TampilanController@index');
         Route::post('/user/dokumen_surat_create/{id}',  'UserController@add_surat');
         Route::get('/user/dokumen_surat_delete/{id}',   'UserController@delete_surat');
 
+    // KEUANGAN
+        Route::get('/user/dokumen_keuangan',               'UserController@index_keuangan');
+        Route::get('/user/dokumen_keuangan_add/{id}',      'UserController@create_keuangan');
+        Route::post('/user/dokumen_keuangan_create/{id}',  'UserController@add_keuangan');
+        Route::get('/user/dokumen_keuangan_delete/{id}',   'UserController@delete_keuangan');
+
+    // ASET
+        Route::get('/user/dokumen_aset',               'UserController@index_aset');
+        Route::get('/user/dokumen_aset_add/{id}',      'UserController@create_aset');
+        Route::post('/user/dokumen_aset_create/{id}',  'UserController@add_aset');
+        Route::get('/user/dokumen_aset_delete/{id}',   'UserController@delete_aset');
+
 Route::get('/login', function(){
     return view('auth.login');
 });
