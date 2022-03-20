@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',                 'TampilanController@index');
-Route::get('/index',            'TampilanController@index');
+Route::get('/index',            'TampilanController@index')->name('dashboard');
+
+//Auth
+    Route::get('/login',        'UserLoginController@index')->name('login');
+    Route::post('login',        'UserLoginController@login');
+    Route::get('/logout',      'UserLoginController@destroy')->name('logout');
 
 // KLIEN
     Route::get('/user/klien',               'UserController@index_klien');
@@ -48,6 +54,3 @@ Route::get('/index',            'TampilanController@index');
         Route::post('/user/dokumen_lain_create/{id}',  'UserController@add_lain');
         Route::get('/user/dokumen_lain_delete/{id}',   'UserController@delete_lain');
 
-Route::get('/login', function(){
-    return view('auth.login');
-});
