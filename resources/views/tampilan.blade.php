@@ -50,45 +50,51 @@
                     <div id="sidebar-menu">
                         @if (empty(@Auth::user()->level))
                         <ul>
-                            <li>
+                            {{-- <li>
                                 <a href="/index" class="waves-effect">
                                     <i class="mdi mdi-animation"></i>
                                     <span> Data Klien</span>
                                 </a>
+                            </li> --}}
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-animation"></i><span> Data </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/index">Klien</a></li>
+                                </ul>
                             </li>
                         </ul>
                         @else
                             <ul>
 
                                 <li>
-                                    <a href="index" class="waves-effect">
-                                        <i class="mdi mdi-home"></i>
-                                        <span> Home</span>
+                                    <a href="/user/index" class="waves-effect">
+                                        <i class="mdi mdi-view-dashboard"></i>
+                                        <span> Dashboard <span class="badge badge-pill badge-primary float-right">7</span></span>
                                     </a>
                                 </li>
 
                                 <li class="menu-title">Data Master</li>
-
                                 <li>
                                     <a href="/user/jenis_dokumen" class="waves-effect">
                                         <i class="mdi mdi-file-document"></i>
-                                        <span> Jenis Dokumen</span>
+                                        <span> Jenis Dokumen <span class="badge badge-pill badge-primary float-right">7</span></span>
                                     </a>
                                 </li>
 
                                 <li class="menu-title">Data </li>
-
-                                <li>
-                                    <a href="/user/dokumen" class="waves-effect">
-                                        <i class="mdi mdi-animation"></i>
-                                        <span> Dokumen</span>
-                                    </a>
+                                <li class="has_sub">
+                                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-animation"></i><span> Dokumen </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="tables-basic.html"> Dokumen Surat</a></li>
+                                        <li><a href="tables-datatable.html"> Dokumen Aset</a></li>
+                                        <li><a href="tables-datatable.html"> Dokumen Keuangan</a></li>
+                                    </ul>
                                 </li>
 
                                 <li>
                                     <a href="/user/klien/" class="waves-effect">
                                         <i class="mdi mdi-animation"></i>
-                                        <span> Data Klien</span>
+                                        <span> Jenis Dokumen <span class="badge badge-pill badge-primary float-right">7</span></span>
                                     </a>
                                 </li>
 
