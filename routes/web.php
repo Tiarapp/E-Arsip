@@ -18,9 +18,11 @@ Route::get('/',                 'TampilanController@index');
 Route::get('/index',            'TampilanController@index')->name('dashboard');
 
 //Auth
-    Route::get('/login',        'UserLoginController@index')->name('login');
-    Route::post('login',        'UserLoginController@login');
-    Route::get('/logout',      'UserLoginController@destroy')->name('logout');
+    Route::get('/register',         'RegisterController@create')->name('index.register');
+    Route::post('register/store',   'RegisterController@store');
+    Route::get('/login',            'UserLoginController@index')->name('login');
+    Route::post('login',            'UserLoginController@login');
+    Route::get('/logout',           'UserLoginController@destroy')->name('logout');
 
 // KLIEN
     Route::get('/user/klien',               'UserController@index_klien');
