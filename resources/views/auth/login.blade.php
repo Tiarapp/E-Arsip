@@ -29,7 +29,7 @@
             </p>
             <div class="input">
                 <div class="user">
-                    <input type="text" placeholder="Username" name="email">
+                    <input type="text" placeholder="Username" name="email" autofocus>
                 </div>
                 <div class="user">
                     <input type="text" placeholder="Password" name="password">
@@ -39,11 +39,9 @@
                 <button class="submit">
                     <p class="login">Login</p>
                 </button>
-                <button class="submit">
-                    <p class="login">Register</p>
-                </button>
             </div>
         </form>
+        <a href="{{ route('index.register') }}" class="account">create New Account</a>
     </div>
 </body>
 </html>
