@@ -239,6 +239,8 @@ class UserController extends Controller
                     'deskripsi'         => $request->keterangan]
                 );
 
+                dd($dokumen);
+
                 return redirect('/user/dokumen_aset')->with('succes','Data Berhasil di Simpan');
             }
 
@@ -308,6 +310,52 @@ class UserController extends Controller
                 return redirect('/user/dokumen_lain')->with('succes','Data Berhasil di Hapus');
             }
 
+    // Jensi Dokumen
+        public function index_jenis_dokumen()
+        {
+            $jd = jns_dokumen::all()
+                            ->sortBy('jns_dokumen');
+            
+            return view('user.jenis_dokumen', compact('jd'));
+        }
+
+        
+        public function create_jenis_dokumen($id)
+        {
+            $jd = jns_dokumen::find($id);
+            return view('user.jenis_dokumen_add', compact('jd', 'id'));
+        }
+
+        public function add_jenis_dokumen(Request $request, $id)
+        {
+            // dd($request->jenis_dokumen);
+
+            $messages = [
+                'jenis_dokumen.required'  =>  'Mohon di Isi!',
+            ];
+
+            $this->validate($request,[
+
+                'jenis_dokumen'     => 'required',
+            ],$messages);
+
+            $jd = jns_dokumen::updateOrCreate(
+                ['id' => $id],
+                ['user_id'  => 1,
+                'jns_dokumen'   => $request->jenis_dokumen]
+            );
+
+            // dd($jd);
+
+            return redirect('/user/jenis_dokumen')->with('succes','Data Berhasil di Simpan');
+        }
+
+        public function delete_jenis_dokumen($id)
+        {
+            $jenis_dokumen = jns_dokumen::findOrFail($id);
+            $jenis_dokumen->delete();
+            return redirect('/user/jenis_dokumen')->with('succes','Data Berhasil di Hapus');
+        }
     /**
      * Show the form for creating a new resource.
      *

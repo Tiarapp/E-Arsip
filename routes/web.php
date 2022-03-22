@@ -31,6 +31,13 @@ Route::get('/index',            'TampilanController@index')->name('dashboard');
     Route::get('/user/klien_view/{id}',     'UserController@view_klien');
     Route::get('/user/klien_delete/{id}',   'UserController@delete_klien');
 
+// JENIS DOKUMEN
+    Route::get('/user/jenis_dokumen',               'UserController@index_jenis_dokumen');
+    Route::get('/user/jenis_dokumen_add/{id}',      'UserController@create_jenis_dokumen');
+    Route::post('/user/jenis_dokumen_create/{id}',  'UserController@add_jenis_dokumen');
+    Route::get('/user/jenis_dokumen_view/{id}',     'UserController@view_jenis_dokumen');
+    Route::get('/user/jenis_dokumen_delete/{id}',   'UserController@delete_jenis_dokumen');
+
 // DOKUMEN
     // SURAT
         Route::get('/user/dokumen_surat',               'UserController@index_surat');
