@@ -69,7 +69,7 @@
                                 <li>
                                     <a href="/user/index" class="waves-effect">
                                         <i class="mdi mdi-view-dashboard"></i>
-                                        <span> Dashboard <span class="badge badge-pill badge-primary float-right">7</span></span>
+                                        <span> Dashboard </span>
                                     </a>
                                 </li>
 
@@ -77,7 +77,7 @@
                                 <li>
                                     <a href="/user/jenis_dokumen" class="waves-effect">
                                         <i class="mdi mdi-file-document"></i>
-                                        <span> Jenis Dokumen <span class="badge badge-pill badge-primary float-right">7</span></span>
+                                        <span> Jenis Dokumen </span>
                                     </a>
                                 </li>
 
@@ -88,13 +88,14 @@
                                         <li><a href="/user/dokumen_surat/"> Dokumen Surat</a></li>
                                         <li><a href="/user/dokumen_aset/"> Dokumen Aset</a></li>
                                         <li><a href="/user/dokumen_keuangan/"> Dokumen Keuangan</a></li>
+                                        <li><a href="/user/dokumen_lain/"> Dokumen Lain-Lain</a></li>
                                     </ul>
                                 </li>
 
                                 <li>
                                     <a href="/user/klien/" class="waves-effect">
-                                        <i class="mdi mdi-animation"></i>
-                                        <span> Jenis Dokumen <span class="badge badge-pill badge-primary float-right">7</span></span>
+                                        <i class="mdi mdi-account-network"></i>
+                                        <span> Klien </span>
                                     </a>
                                 </li>
 

@@ -16,7 +16,7 @@ class UserLoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request) 
+    public function login(Request $request)
     {
         $rules = [
             'email' => 'required',
@@ -40,7 +40,9 @@ class UserLoginController extends Controller
         Auth::attempt($data);
 
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            if (Auth::user()->level == "user") {
+                return redirect('/user/jenis_dokumen');
+            }
         } else {
             return redirect()->route('login')->withInput()->withErrors(['error' => 'Username atau Password tidak ditemukan!']);
         }
