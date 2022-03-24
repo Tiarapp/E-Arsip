@@ -15,8 +15,8 @@
         <form action="/register/store" method="POST">
             @csrf
                 <div class="logo">
-                    <img src="{{asset('/template/assets/images/logo-lg.png')}}" alt="" class="logo-large">
-                    <img src="{{asset('/template/assets/images/logo-jt.png')}}" alt="" class="logo-large">
+                    {{-- <img src="{{asset('/template/assets/images/logo-lg.png')}}" alt="" class="logo-large">
+                    <img src="{{asset('/template/assets/images/logo-jt.png')}}" alt="" class="logo-large"> --}}
                 </div>
                 <p class="welcome">
                     Welcome To E-Arsip

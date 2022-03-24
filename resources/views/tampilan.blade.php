@@ -9,7 +9,7 @@
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="{{asset('/template/assets/images/favicon.ico')}}">
+        <link rel="shortcut icon" href="{{asset('/template/assets/images/logo-jt.png')}}">
 
         <link href="{{asset('/template/assets/plugins/animate/animate.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('/template/assets/css/bootstrap-material-design.min.css')}}" rel="stylesheet" type="text/css">
@@ -40,7 +40,7 @@
                     <div class="text-center">
                         <!--<a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Urora</a>-->
                         <a href="index.html" class="logo">
-                            <img src="{{asset('/template/assets/images/logo-lg.png')}}" alt="" class="logo-large">
+                            <img src="{{asset('/template/assets/images/logo-detail.png')}}" alt="" class="logo-large" style="width: 250px; height: 90px; margin-top: -8px">
                         </a>
                     </div>
                 </div>
@@ -139,12 +139,12 @@
                                             <div class="dropdown-item noti-title">
                                                 <h5>Welcome</h5>
                                             </div>
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
+                                            {{-- <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
                                             <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
                                             <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
+                                            <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a> --}}
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
+                                            <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout m-r-5 text-muted"></i> Login</a>
                                         </div>
                                     </li>
                                 </ul>

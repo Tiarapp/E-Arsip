@@ -1,7 +1,10 @@
 .body {
     width: auto;
     height: auto;
+    background: url('/template/assets/images/logo-detail.png');
     background-color: #e3e2de;
+    background-repeat: no-repeat;
+    background-size: 900px 600px;
     /* border: 1px solid black; */
 }
 
@@ -12,6 +15,7 @@ form {
 
 .wrapper {
     position: relative;
+    float: right;
     margin: auto;
     width: 409px;
     height: 550px;
