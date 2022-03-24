@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{{asset('/template/assets/css/login.css')}}">
     <title>Login</title>
+    <style>
+        
+    </style>
 </head>
 <body class="body">
     @if(session()->has('success'))
@@ -22,7 +25,7 @@
         <form method="POST" action="{{ route('login') }}" class="login">
         @csrf
             <div class="img-logo">
-                <img src="{{asset('/template/assets/images/logo-lg.png')}}" alt="" class="logo-large">
+                {{-- <img src="{{asset('/template/assets/images/logo-lg.png')}}" alt="" class="logo-large"> --}}
             </div>
             <p class="welcome">
                 Welcome To E-Arsip
