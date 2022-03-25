@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,9 +27,13 @@ class TampilanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function userIndex()
     {
-        //
+        $dokumen_surat = dokumen::where('jns_dokumen_id', '=', 1)
+                        ->get();
+        $ds = count($dokumen_surat);
+
+        return view('user.index', compact('ds'));
     }
 
     /**

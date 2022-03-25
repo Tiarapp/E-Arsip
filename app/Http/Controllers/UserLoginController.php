@@ -40,9 +40,13 @@ class UserLoginController extends Controller
         Auth::attempt($data);
 
         if (Auth::check()) {
+<<<<<<< Updated upstream
             if (Auth::user()->level == "user") {
                 return redirect('/user/jenis_dokumen');
             }
+=======
+            return redirect()->route('user.dashboard');
+>>>>>>> Stashed changes
         } else {
             return redirect()->route('login')->withInput()->withErrors(['error' => 'Username atau Password tidak ditemukan!']);
         }

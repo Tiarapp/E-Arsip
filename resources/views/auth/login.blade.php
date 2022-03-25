@@ -28,14 +28,14 @@
                 {{-- <img src="{{asset('/template/assets/images/logo-lg.png')}}" alt="" class="logo-large"> --}}
             </div>
             <p class="welcome">
-                Welcome To E-Arsip
+                Welcome To E-Asia
             </p>
             <div class="input">
                 <div class="user">
                     <input type="text" placeholder="Username" name="email" autofocus>
                 </div>
                 <div class="user">
-                    <input type="text" placeholder="Password" name="password">
+                    <input type="password" placeholder="Password" name="password">
                 </div>
             </div>
             <div class="button">

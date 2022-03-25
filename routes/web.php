@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',                 'TampilanController@index');
 Route::get('/index',            'TampilanController@index')->name('dashboard');
+Route::get('/user',             'TampilanController@userIndex')->name('user.dashboard');
 
 //Auth
     Route::get('/register',         'RegisterController@create')->name('index.register');
