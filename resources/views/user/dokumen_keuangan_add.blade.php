@@ -67,11 +67,22 @@
                             </div>
 
                             <div class="col-md-12">
-                                <h6 class="text-muted">Upload File</h6>
-                                <input type="file" class="form-control-file" id="exampleInputFile" name="file" value="{{$dokumen->file ?? ''}}">
+                                @if (@empty($dokumen->file))
+
+                                    <h6 class="text-muted">Upload File</h6>
+                                    <input type="file" class="form-control-file" id="exampleInputFile" name="file" value="">
+                                @else
+
+                                    <h6 class="text-muted">Detail File</h6>
+                                    <input type="text" class="form-control" name="file" value="{{$dokumen->file}}">
+                                @endif
+
                                 {{-- <small class="text-muted">
                                     Hanya File jpg, png, jpeg, ukuran file maksimal 3Mb
                                 </small> --}}
+                            </div>
+                            <div class="col-md-2">
+                                <h6 class="text-muted">Detail File</h6>
                             </div>
                         </div>
 

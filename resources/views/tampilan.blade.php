@@ -40,7 +40,7 @@
                     <div class="text-center">
                         <!--<a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Urora</a>-->
                         <a href="index.html" class="logo">
-                            <img src="{{asset('/template/assets/images/logo-detail.png')}}" alt="" class="logo-large" style="width: 250px; height: 90px; margin-top: -7px">
+                            <img src="{{asset('/template/assets/images/logo-detail.png')}}" alt="" class="logo-large" style="width: 240px; height: 90px; margin-top: -8px">
                         </a>
                     </div>
                 </div>
