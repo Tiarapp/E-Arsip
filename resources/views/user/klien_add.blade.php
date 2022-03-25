@@ -65,10 +65,10 @@
                                 <h6 class="text-muted">Tanggal Lahir</h6>
                                 @if (empty($klien->tgl_lahir))
 
-                                    <input type="date" class="form-control" name="tgl_lahir" placeholder="2017-06-04" id="aa" required>
+                                    <input type="date" class="form-control" name="tgl_lahir" placeholder="2017-06-04" id="mdate" required>
                                 @else
 
-                                    <input type="date" class="form-control" name="tgl_lahir" value="{{$klien->tgl_lahir->format('Y-m-d')}}" placeholder="2017-06-04" id="aa" required>
+                                    <input type="date" class="form-control" name="tgl_lahir" value="{{$klien->tgl_lahir->format('Y-m-d')}}" placeholder="2017-06-04" id="mdate" required>
                                 @endif
                             </div>
 
@@ -97,10 +97,10 @@
                                 <h6 class="text-muted">Tanggal Masuk</h6>
                                 @if (empty($klien->tgl_msk))
 
-                                    <input type="date" class="form-control" name="tgl_msk" placeholder="2017-06-04" id="indate" required>
+                                    <input type="date" class="form-control" name="tgl_msk" placeholder="2017-06-04" id="mdate" required>
                                 @else
 
-                                    <input type="date" class="form-control" name="tgl_msk" value="{{$klien->tgl_msk}}" placeholder="2017-06-04" id="indate" required>
+                                    <input type="date" class="form-control" name="tgl_msk" value="{{$klien->tgl_msk}}" placeholder="2017-06-04" id="mdate" required>
                                 @endif
                             </div>
 

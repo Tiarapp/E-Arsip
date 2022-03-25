@@ -27,7 +27,7 @@
                         {{-- <p class="label">Email</p> --}}
                         <input type="text" placeholder="Email" name="email">
                         {{-- <p class="label">Password</p> --}}
-                        <input type="text" placeholder="Password" name="password">
+                        <input type="password" placeholder="Password" name="password">
                 </div>
                 <div class="button">
                     <button class="submit">
