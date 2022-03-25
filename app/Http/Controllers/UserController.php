@@ -310,16 +310,17 @@ class UserController extends Controller
                 return redirect('/user/dokumen_lain')->with('succes','Data Berhasil di Hapus');
             }
 
-    // Jensi Dokumen
+    // JENIS DOKUMEN
         public function index_jenis_dokumen()
         {
             $jd = jns_dokumen::all()
                             ->sortBy('jns_dokumen');
-            
+            // return $jd;
+
             return view('user.jenis_dokumen', compact('jd'));
         }
 
-        
+
         public function create_jenis_dokumen($id)
         {
             $jd = jns_dokumen::find($id);

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',                 'TampilanController@index');
 Route::get('/index',            'TampilanController@index')->name('dashboard');
+Route::get('/user',             'TampilanController@userIndex')->name('user.dashboard');
 
 //Auth
     Route::get('/register',         'RegisterController@create')->name('index.register');
@@ -24,42 +25,49 @@ Route::get('/index',            'TampilanController@index')->name('dashboard');
     Route::post('login',            'UserLoginController@login');
     Route::get('/logout',           'UserLoginController@destroy')->name('logout');
 
-// KLIEN
-    Route::get('/user/klien',               'UserController@index_klien');
-    Route::get('/user/klien_add/{id}',      'UserController@create_klien');
-    Route::post('/user/klien_create/{id}',  'UserController@add_klien');
-    Route::get('/user/klien_view/{id}',     'UserController@view_klien');
-    Route::get('/user/klien_delete/{id}',   'UserController@delete_klien');
+Route::group( [
+        'middleware' => 'is_user'
+    ] , function ( ) {
 
-// JENIS DOKUMEN
-    Route::get('/user/jenis_dokumen',               'UserController@index_jenis_dokumen');
-    Route::get('/user/jenis_dokumen_add/{id}',      'UserController@create_jenis_dokumen');
-    Route::post('/user/jenis_dokumen_create/{id}',  'UserController@add_jenis_dokumen');
-    Route::get('/user/jenis_dokumen_view/{id}',     'UserController@view_jenis_dokumen');
-    Route::get('/user/jenis_dokumen_delete/{id}',   'UserController@delete_jenis_dokumen');
+        // KLIEN
+            Route::get('/user/klien',               'UserController@index_klien');
+            Route::get('/user/klien_add/{id}',      'UserController@create_klien');
+            Route::post('/user/klien_create/{id}',  'UserController@add_klien');
+            Route::get('/user/klien_view/{id}',     'UserController@view_klien');
+            Route::get('/user/klien_delete/{id}',   'UserController@delete_klien');
 
-// DOKUMEN
-    // SURAT
-        Route::get('/user/dokumen_surat',               'UserController@index_surat');
-        Route::get('/user/dokumen_surat_add/{id}',      'UserController@create_surat');
-        Route::post('/user/dokumen_surat_create/{id}',  'UserController@add_surat');
-        Route::get('/user/dokumen_surat_delete/{id}',   'UserController@delete_surat');
+        // JENIS DOKUMEN
+            Route::get('/user/jenis_dokumen',               'UserController@index_jenis_dokumen');
+            Route::get('/user/jenis_dokumen_add/{id}',      'UserController@create_jenis_dokumen');
+            Route::post('/user/jenis_dokumen_create/{id}',  'UserController@add_jenis_dokumen');
+            Route::get('/user/jenis_dokumen_view/{id}',     'UserController@view_jenis_dokumen');
+            Route::get('/user/jenis_dokumen_delete/{id}',   'UserController@delete_jenis_dokumen');
 
-    // KEUANGAN
-        Route::get('/user/dokumen_keuangan',               'UserController@index_keuangan');
-        Route::get('/user/dokumen_keuangan_add/{id}',      'UserController@create_keuangan');
-        Route::post('/user/dokumen_keuangan_create/{id}',  'UserController@add_keuangan');
-        Route::get('/user/dokumen_keuangan_delete/{id}',   'UserController@delete_keuangan');
+        // DOKUMEN
+            // SURAT
+                Route::get('/user/dokumen_surat',               'UserController@index_surat');
+                Route::get('/user/dokumen_surat_add/{id}',      'UserController@create_surat');
+                Route::post('/user/dokumen_surat_create/{id}',  'UserController@add_surat');
+                Route::get('/user/dokumen_surat_delete/{id}',   'UserController@delete_surat');
 
-    // ASET
-        Route::get('/user/dokumen_aset',               'UserController@index_aset');
-        Route::get('/user/dokumen_aset_add/{id}',      'UserController@create_aset');
-        Route::post('/user/dokumen_aset_create/{id}',  'UserController@add_aset');
-        Route::get('/user/dokumen_aset_delete/{id}',   'UserController@delete_aset');
+            // KEUANGAN
+                Route::get('/user/dokumen_keuangan',               'UserController@index_keuangan');
+                Route::get('/user/dokumen_keuangan_add/{id}',      'UserController@create_keuangan');
+                Route::post('/user/dokumen_keuangan_create/{id}',  'UserController@add_keuangan');
+                Route::get('/user/dokumen_keuangan_delete/{id}',   'UserController@delete_keuangan');
 
-    // DOKUMEN LAIN
-        Route::get('/user/dokumen_lain',               'UserController@index_lain');
-        Route::get('/user/dokumen_lain_add/{id}',      'UserController@create_lain');
-        Route::post('/user/dokumen_lain_create/{id}',  'UserController@add_lain');
-        Route::get('/user/dokumen_lain_delete/{id}',   'UserController@delete_lain');
+            // ASET
+                Route::get('/user/dokumen_aset',               'UserController@index_aset');
+                Route::get('/user/dokumen_aset_add/{id}',      'UserController@create_aset');
+                Route::post('/user/dokumen_aset_create/{id}',  'UserController@add_aset');
+                Route::get('/user/dokumen_aset_delete/{id}',   'UserController@delete_aset');
+
+            // DOKUMEN LAIN
+                Route::get('/user/dokumen_lain',               'UserController@index_lain');
+                Route::get('/user/dokumen_lain_add/{id}',      'UserController@create_lain');
+                Route::post('/user/dokumen_lain_create/{id}',  'UserController@add_lain');
+                Route::get('/user/dokumen_lain_delete/{id}',   'UserController@delete_lain');
+
+    });
+
 

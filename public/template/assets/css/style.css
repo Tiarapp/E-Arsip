@@ -3999,4 +3999,59 @@ File: Responsive
     font-size: 13px;
   }
 }
+
+.kartu{
+  display: inline-block;
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+}
 /*# sourceMappingURL=style.css.map */
+
+.logo {
+  width: 220px;
+  height: 220px;
+  display: inline-block;
+}
+
+.logo img {
+  width: 100px;
+  height: 100px;
+  left: 5px;
+}
+
+
+p.total {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  /* right: 10px; */
+  /* left: 120px; */
+  bottom: 25px;
+  color: grey;
+  font-size: 60px;
+  
+  /* position: absolute;
+  color: white;
+  bottom: 6px;
+  right: 6px;
+  margin: 0;
+  background: black;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500; */
+}
+
+.title {
+  width: 200px;
+  height: auto;
+}
+
+.title a {
+  font-size: 20px;
+  font-weight: 200px;
+  text-align: center;
+  margin: 5px 26px;
+}
