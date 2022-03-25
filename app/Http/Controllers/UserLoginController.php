@@ -39,6 +39,8 @@ class UserLoginController extends Controller
         // dd(Hash::make('123456'));
         Auth::attempt($data);
 
+        // dd(empty(@Auth::user()->level));
+
         if (Auth::check()) {
 
             if (Auth::user()->level == "user") {
@@ -58,7 +60,7 @@ class UserLoginController extends Controller
 
         Auth::logout();
 
-        return redirect('login');
+        return redirect('/index');
     }
 }
 ?>
