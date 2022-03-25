@@ -34,13 +34,26 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'level' => 'user'
         ]);
 
         // dd($user);   
 
         auth()->login($user);
 
-        return redirect('/index');
+        // dd(Auth::check());
+
+        if (Auth::check()) {
+            // dd(Auth::user()->level == "user");
+            if (Auth::user()->level == "user") {
+                return redirect('/user/jenis_dokumen');
+            }
+
+            // return redirect()->route('user.dashboard');
+
+        } else {
+            return redirect()->route('login')->withInput()->withErrors(['error' => 'Username atau Password tidak ditemukan!']);
+        }
     }
 }
