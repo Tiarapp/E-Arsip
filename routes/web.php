@@ -56,6 +56,7 @@ Route::group( [
                 Route::get('/user/dokumen_keuangan_add/{id}',      'UserController@create_keuangan');
                 Route::post('/user/dokumen_keuangan_create/{id}',  'UserController@add_keuangan');
                 Route::get('/user/dokumen_keuangan_delete/{id}',   'UserController@delete_keuangan');
+                Route::get('/user/download_dokumen_keuangan/{nm}',       'UserController@getDownload_keuangan');
 
             // ASET
                 Route::get('/user/dokumen_aset',               'UserController@index_aset');
@@ -68,6 +69,7 @@ Route::group( [
                 Route::get('/user/dokumen_lain_add/{id}',      'UserController@create_lain');
                 Route::post('/user/dokumen_lain_create/{id}',  'UserController@add_lain');
                 Route::get('/user/dokumen_lain_delete/{id}',   'UserController@delete_lain');
+                Route::get('/user/download_dokumen_lain/{fdr}/{nm}',        'UserController@getDownload_lain');
 
     });
 

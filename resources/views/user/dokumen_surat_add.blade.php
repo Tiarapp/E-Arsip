@@ -66,7 +66,7 @@
                                 <textarea id="textarea" name="deskripsi" class="form-control" maxlength="225" rows="3" placeholder="Maksimal hanya 255 huruf" >{{$dokumen->deskripsi ?? ''}}</textarea>
                             </div>
 
-                            @if ($dokumen->file)
+                            @if ($dokumen->file ?? '')
                                 <div class="col-md-4">
                                     <h6 class="text-muted">Nama File</h6>
                                     <input type="text" class="form-control"  name="file2" value="{{$dokumen->file}}">
@@ -79,8 +79,6 @@
                                         <div class="ripple-container"></div></button>
                                     </a>
                                 </div>
-                            @else
-
                             @endif
 
                             <div class="col-md-12">

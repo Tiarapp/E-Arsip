@@ -127,7 +127,7 @@ class UserController extends Controller
                     $file = $request->file('file');
                     $nama_file = $request->nm."-".$file->getClientOriginalName();
                 } else {
-                    $nama_file=null;
+                    $nama_file=$request->file2;
                 }
 
                 $dokumen = dokumen::updateOrCreate(
@@ -187,13 +187,16 @@ class UserController extends Controller
                 //     'file'              => 'required|file|mimes:jpeg,png,jpg|max: 3072',
                 // ],$messages);
 
-                if ($request->file == NULL) {
+                if ($request->file('file')) {
 
-                    $nama_file=NULL;
-                } else {
+                    if ($request->file2) {
+                        File::delete('keuangan/'.$request->file2);
+                    }
 
                     $file = $request->file('file');
                     $nama_file = $request->nm."-".$file->getClientOriginalName();
+                } else {
+                    $nama_file=$request->file2;
                 }
 
                 $dokumen = dokumen::updateOrCreate(
@@ -205,9 +208,7 @@ class UserController extends Controller
                     'file'              => $nama_file]
                 );
 
-                if ($request->file == NULL) {
-                } else {
-
+                if ($request->file('file')) {
                     $tujuan_upload = 'keuangan';
                     $file->move($tujuan_upload,$nama_file);
                 }
@@ -220,6 +221,12 @@ class UserController extends Controller
                 $dokumen = dokumen::findOrFail($id);
                 $dokumen->delete();
                 return redirect('/user/dokumen_keuangan')->with('succes','Data Berhasil di Hapus');
+            }
+
+            public function getDownload_keuangan($nm)
+            {
+                $file = public_path()."/keuangan/".$nm;
+                return response()->download($file, $nm);
             }
 
         // ASET
@@ -284,13 +291,16 @@ class UserController extends Controller
             public function add_lain(Request $request, $id)
             {
 
-                if ($request->file == NULL) {
+                if ($request->file('file')) {
 
-                    $nama_file=NULL;
-                } else {
+                    if ($request->file2) {
+                        File::delete($request->jns.'/'.$request->file2);
+                    }
 
                     $file = $request->file('file');
-                    $nama_file = $request->nm."_".$file->getClientOriginalName();
+                    $nama_file = $request->nm."-".$file->getClientOriginalName();
+                } else {
+                    $nama_file=$request->file2;
                 }
 
                 $dokumen = dokumen::updateOrCreate(
@@ -303,10 +313,8 @@ class UserController extends Controller
                     'file'              => $nama_file]
                 );
 
-                if ($request->file == NULL) {
-                } else {
-
-                    $tujuan_upload = 'lain-lain';
+                if ($request->file('file')) {
+                    $tujuan_upload = $request->jns;
                     $file->move($tujuan_upload,$nama_file);
                 }
 
@@ -318,6 +326,12 @@ class UserController extends Controller
                 $dokumen = dokumen::findOrFail($id);
                 $dokumen->delete();
                 return redirect('/user/dokumen_lain')->with('succes','Data Berhasil di Hapus');
+            }
+
+            public function getDownload_lain($fdr,$nm)
+            {
+                $file = public_path().'/'.$fdr.'/'.$nm;
+                return response()->download($file, $nm);
             }
 
     // JENIS DOKUMEN
