@@ -50,9 +50,9 @@ class UserController extends Controller
                 }
 
                 $foto = $request->file('foto');
-                $nama_foto = $request->nama."_".$foto->getClientOriginalName();
+                $nama_foto = $request->nama."-".$foto->getClientOriginalName();
             } else {
-                $nama_foto=$request->foto2;
+                $nama_foto=null;
             }
 
 
@@ -118,13 +118,16 @@ class UserController extends Controller
                 //     'file'              => 'required|file|mimes:jpeg,png,jpg|max: 3072',
                 // ],$messages);
 
-                if ($request->file == NULL) {
+                if ($request->file('file')) {
 
-                    $nama_file=NULL;
-                } else {
+                    if ($request->file2) {
+                        File::delete('surat/'.$request->file2);
+                    }
 
                     $file = $request->file('file');
-                    $nama_file = $request->nm."_".$file->getClientOriginalName();
+                    $nama_file = $request->nm."-".$file->getClientOriginalName();
+                } else {
+                    $nama_file=null;
                 }
 
                 $dokumen = dokumen::updateOrCreate(
@@ -136,9 +139,7 @@ class UserController extends Controller
                     'file'              => $nama_file]
                 );
 
-                if ($request->file == NULL) {
-                } else {
-
+                if ($request->file('file')) {
                     $tujuan_upload = 'surat';
                     $file->move($tujuan_upload,$nama_file);
                 }
@@ -151,6 +152,12 @@ class UserController extends Controller
                 $dokumen = dokumen::findOrFail($id);
                 $dokumen->delete();
                 return redirect('/user/dokumen_surat')->with('succes','Data Berhasil di Hapus');
+            }
+
+            public function getDownload($nm)
+            {
+                $file = public_path()."/surat/".$nm;
+                return response()->download($file, $nm);
             }
 
         // KEUANGAN
@@ -186,7 +193,7 @@ class UserController extends Controller
                 } else {
 
                     $file = $request->file('file');
-                    $nama_file = $request->nm."_".$file->getClientOriginalName();
+                    $nama_file = $request->nm."-".$file->getClientOriginalName();
                 }
 
                 $dokumen = dokumen::updateOrCreate(
@@ -360,6 +367,7 @@ class UserController extends Controller
             $jenis_dokumen->delete();
             return redirect('/user/jenis_dokumen')->with('succes','Data Berhasil di Hapus');
         }
+
     /**
      * Show the form for creating a new resource.
      *

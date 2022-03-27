@@ -66,8 +66,26 @@
                                 <textarea id="textarea" name="deskripsi" class="form-control" maxlength="225" rows="3" placeholder="Maksimal hanya 255 huruf" >{{$dokumen->deskripsi ?? ''}}</textarea>
                             </div>
 
+                            @if ($dokumen->file)
+                                <div class="col-md-4">
+                                    <h6 class="text-muted">Nama File</h6>
+                                    <input type="text" class="form-control"  name="file2" value="{{$dokumen->file}}">
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-muted">Cek File</h6>
+                                    <a href="/user/download_dokumen/{{$dokumen->file}}">
+                                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                                            <i class="mdi mdi-arrow-down"></i>
+                                        <div class="ripple-container"></div></button>
+                                    </a>
+                                </div>
+                            @else
+
+                            @endif
+
                             <div class="col-md-12">
                                 <h6 class="text-muted">Upload File</h6>
+
                                 <input type="file" class="form-control-file" id="exampleInputFile" name="file" value="{{$dokumen->file ?? ''}}">
                                 {{-- <small class="text-muted">
                                     Hanya File jpg, png, jpeg, ukuran file maksimal 3Mb

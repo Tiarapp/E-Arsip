@@ -49,6 +49,7 @@ Route::group( [
                 Route::get('/user/dokumen_surat_add/{id}',      'UserController@create_surat');
                 Route::post('/user/dokumen_surat_create/{id}',  'UserController@add_surat');
                 Route::get('/user/dokumen_surat_delete/{id}',   'UserController@delete_surat');
+                Route::get('/user/download_dokumen/{nm}',       'UserController@getDownload');
 
             // KEUANGAN
                 Route::get('/user/dokumen_keuangan',               'UserController@index_keuangan');
