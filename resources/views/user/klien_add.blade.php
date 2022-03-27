@@ -112,7 +112,7 @@
                             <div class="col-md-12">
                                 <h6 class="text-muted">Foto Klien</h6>
 
-                                @if ($klien->foto)
+                                @if ($klien->foto ?? '')
 
                                     <img class="mb-2" id="blah" src="{{asset('foto/'.$klien->foto)}}" alt="Foto yang diupload" width="150px" height="100px"/>
                                     <input type="hidden" name="foto2" value="{{$klien->foto}}">
