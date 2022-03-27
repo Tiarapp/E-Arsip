@@ -21,6 +21,7 @@ class CreateKlienTable extends Migration
             $table->string('jenis_kel')->nullable();
             $table->string('alamat')->nullable();
             $table->date('tgl_msk')->nullable();
+            $table->string('foto')->nullable();
             $table->string('keterangan')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');

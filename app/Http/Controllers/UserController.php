@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 use App\Models\klien;
@@ -34,26 +35,30 @@ class UserController extends Controller
         public function add_klien(Request $request, $id)
         {
             $messages = [
-                'foto.mimes'        =>  'Upload foto Hanya File dengan type JPEG, PNG, dan JPG',
+                'foto.image'        =>  'Hanya file Image',
                 'foto.max'          =>  'Maksimal File foto Berukuran 3 Mb',
             ];
             $this->validate($request,[
 
-                'foto'              => 'required|file|mimes:jpeg,png,jpg|max: 3072',
+                'foto'              => 'image|file|max: 3072',
             ],$messages);
 
-            if ($request->foto == NULL) {
+            if ($request->file('foto')) {
 
-                $nama_foto=NULL;
-            } else {
+                if ($request->foto2) {
+                    File::delete('foto/'.$request->foto2);
+                }
 
                 $foto = $request->file('foto');
-                $nama_foto = time()."_".$foto->getClientOriginalName();
+                $nama_foto = $request->nama."_".$foto->getClientOriginalName();
+            } else {
+                $nama_foto=$request->foto2;
             }
+
 
             $klien = klien::updateOrCreate(
                 ['id' => $id],
-                ['user_id'  => 1,
+                ['user_id'  => Auth::user()->id,
                 'nama'      => $request->nama,
                 'tgl_lahir' => $request->tgl_lahir,
                 'jenis_kel' => $request->jenis_kel,
@@ -63,9 +68,7 @@ class UserController extends Controller
                 'keterangan'=> $request->keterangan]
             );
 
-            if ($request->foto == NULL) {
-            } else {
-
+            if ($request->file('foto')) {
                 $tujuan_upload = 'foto';
                 $foto->move($tujuan_upload,$nama_foto);
             }
@@ -121,12 +124,12 @@ class UserController extends Controller
                 } else {
 
                     $file = $request->file('file');
-                    $nama_file = time()."_".$file->getClientOriginalName();
+                    $nama_file = $request->nm."_".$file->getClientOriginalName();
                 }
 
                 $dokumen = dokumen::updateOrCreate(
                     ['id' => $id],
-                    ['user_id'          => 1,
+                    ['user_id'          => Auth::user()->id,
                     'jns_dokumen_id'    => 1,
                     'nm'                => $request->nm,
                     'deskripsi'         => $request->deskripsi,
@@ -183,12 +186,12 @@ class UserController extends Controller
                 } else {
 
                     $file = $request->file('file');
-                    $nama_file = time()."_".$file->getClientOriginalName();
+                    $nama_file = $request->nm."_".$file->getClientOriginalName();
                 }
 
                 $dokumen = dokumen::updateOrCreate(
                     ['id' => $id],
-                    ['user_id'          => 1,
+                    ['user_id'          => Auth::user()->id,
                     'jns_dokumen_id'    => 3,
                     'nm'                => $request->nm,
                     'deskripsi'         => $request->deskripsi,
@@ -232,7 +235,7 @@ class UserController extends Controller
             {
                 $dokumen = dokumen::updateOrCreate(
                     ['id' => $id],
-                    ['user_id'          => 1,
+                    ['user_id'          => Auth::user()->id,
                     'jns_dokumen_id'    => 2,
                     'nm'                => $request->nm,
                     'jml'               => $request->jml,
@@ -280,12 +283,12 @@ class UserController extends Controller
                 } else {
 
                     $file = $request->file('file');
-                    $nama_file = time()."_".$file->getClientOriginalName();
+                    $nama_file = $request->nm."_".$file->getClientOriginalName();
                 }
 
                 $dokumen = dokumen::updateOrCreate(
                     ['id' => $id],
-                    ['user_id'          => 1,
+                    ['user_id'          => Auth::user()->id,
                     'jns_dokumen_id'    => $request->jns,
                     'nm'                => $request->nm,
                     'jml'               => $request->jml,
@@ -342,7 +345,7 @@ class UserController extends Controller
 
             $jd = jns_dokumen::updateOrCreate(
                 ['id' => $id],
-                ['user_id'  => 1,
+                ['user_id'  => Auth::user()->id,
                 'jns_dokumen'   => $request->jenis_dokumen]
             );
 
