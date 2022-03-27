@@ -45,10 +45,9 @@
 
                             <div class="col-md-12">
                                 <div id="image">
-
+                                    <img class="img-thumbnail img-fluid mx-auto d-block" alt="200x200" height="200px" width="200px" src="{{asset('/foto/'.$klien->foto)}}" data-holder-rendered="true">
                                 </div>
-                                <img class="img-thumbnail img-fluid mx-auto d-block" alt="200x200" height="200px" width="200px" src="{{asset('/foto/'.$klien->foto)}}" data-holder-rendered="true">
-                                <div class="mt-2 text-center"><code class="font-16">.rounded-circle</code></div>
+                                {{-- <div class="mt-2 text-center"><code class="font-16">.rounded-circle</code></div> --}}
                             </div>
                             <div class="col-md-6">
                                 <h6 class="text-muted">Nama Klien</h6>

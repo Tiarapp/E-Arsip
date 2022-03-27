@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{{asset('/template/assets/css/register.css')}}">
     <title>Login</title>
+    
 </head>
 <body class="body">
     @foreach ($errors->all() as $error)
@@ -19,7 +20,7 @@
                     <img src="{{asset('/template/assets/images/logo-jt.png')}}" alt="" class="logo-large"> --}}
                 </div>
                 <p class="welcome">
-                    Welcome To E-Arsip
+                    Welcome To E-Asia
                 </p>
                 <div class="input">
                         {{-- <p class="label">Nama</p> --}}

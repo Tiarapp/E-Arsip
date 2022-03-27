@@ -110,8 +110,18 @@
                             </div>
 
                             <div class="col-md-12">
-                                <h6 class="text-muted">Upload Foto</h6>
-                                <input type="file" class="form-control-file" id="exampleInputFile" name="foto" value="{{$klien->foto ?? ''}}">
+                                <h6 class="text-muted">Foto Klien</h6>
+
+                                @if ($klien->foto)
+
+                                    <img class="mb-2" id="blah" src="{{asset('foto/'.$klien->foto)}}" alt="Foto yang diupload" width="150px" height="100px"/>
+                                    <input type="hidden" name="foto2" value="{{$klien->foto}}">
+                                @else
+
+                                    <img class="mb-2" id="blah" src="#" alt="Foto yang diupload" width="150px" height="100px"/>
+                                @endif
+
+                                <input type="file" class="form-control-file" id="imgInp" name="foto" value="">
                                 <small class="text-muted">
                                     Hanya File jpg, png, jpeg, ukuran file maksimal 3Mb
                                 </small>
@@ -157,4 +167,33 @@
 
     <!-- Plugins Init js -->
     <script src="{{asset('/template/assets/pages/form-advanced.js')}}"></script>
+
+    <script>
+        $('#edit').click(function () {
+            document.getElementById('foto2').hidden=false;
+            document.getElementById('berubah').value="berubah";
+        });
+
+        // function previewImage(){
+
+        //     const image = document.querySelector(#foto);
+        //     const imgPreview = document.querySelector('.img-preview');
+
+        //     imgPreview.style.display='block';
+
+        //     const oFReader = new FileReader();
+        //     oFReader.readAsDataURL(image.file[0]);
+
+        //     oFReader.onload = function(oFREvent){
+        //         imgPreview.src = oFREvent.target.result;
+        //     }
+        // }
+
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 @endsection
