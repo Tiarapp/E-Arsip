@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',                 'TampilanController@index');
 Route::get('/index',            'TampilanController@index')->name('dashboard');
-Route::get('/user',             'TampilanController@userIndex')->name('user.dashboard');
 
 //Auth
     Route::get('/register',         'RegisterController@create')->name('index.register');
@@ -29,6 +28,8 @@ Route::group( [
         'middleware' => 'is_user'
     ] , function ( ) {
 
+        
+            Route::get('/user',             'TampilanController@userIndex')->name('user.dashboard');
         // KLIEN
             Route::get('/user/klien',               'UserController@index_klien');
             Route::get('/user/klien_add/{id}',      'UserController@create_klien');

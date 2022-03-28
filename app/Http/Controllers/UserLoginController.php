@@ -28,7 +28,6 @@ class UserLoginController extends Controller
             'password.required' => 'Password harus di isi'
         ];
 
-        // dd($request->email);
         $validator = Validator::make($request->all(), $rules, $message);
 
         $data = [
@@ -36,18 +35,14 @@ class UserLoginController extends Controller
             'password' => $request->input('password')
         ];
 
-        // dd(Hash::make('123456'));
         Auth::attempt($data);
 
-        // dd(empty(@Auth::user()->level));
 
         if (Auth::check()) {
 
             if (Auth::user()->level == "user") {
-                return redirect('/user/jenis_dokumen');
+                return redirect('/user');
             }
-
-            // return redirect()->route('user.dashboard');
 
         } else {
             return redirect()->route('login')->withInput()->withErrors(['error' => 'Username atau Password tidak ditemukan!']);
