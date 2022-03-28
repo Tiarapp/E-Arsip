@@ -67,7 +67,7 @@
                             <ul>
 
                                 <li>
-                                    <a href="/user/index" class="waves-effect">
+                                    <a href="/user" class="waves-effect">
                                         <i class="mdi mdi-view-dashboard"></i>
                                         <span> Dashboard </span>
                                     </a>

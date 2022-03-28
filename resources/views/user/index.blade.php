@@ -7,7 +7,7 @@
     <link href="{{asset('/template/assets/plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Responsive datatable examples -->
     <link href="{{asset('/template/assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('/template/assets/style.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/template/assets/css/custome.css')}}" rel="stylesheet" type="text/css" />
 
 @endsection
 
@@ -25,26 +25,62 @@
         <div class="col-12">
             <div class="card m-b-30">
                 <div class="card-body">
-                    <div class="kartu">
-                        <div class="logo">
-                            <img src="{{ asset('template/assets/images/email.png') }}" alt="email">
-                            <p class="total">
-                                48
-                            </p>
+                    <div class="wrapper-dash">
+                        <div class="kartu">
+                            <div class="logo-dash">
+                                <img src="{{ asset('template/assets/images/email.png') }}" alt="email">
+                                <p class="total">
+                                    {{ $dokumen_surat }}
+                                </p>
+                            </div>
+                            <div class="title">
+                                <p>Dokumen Surat</p>
+                            </div>
+                            <div class="btn-next">
+                                <a href="/user/dokumen_surat">See More Document</a>
+                            </div>
                         </div>
-                        <div class="title">
-                            <a href="/user/dokumen_surat">Dokumen Surat</a>
+                        <div class="kartu">
+                            <div class="logo-dash">
+                                <img src="{{ asset('template/assets/images/email.png') }}" alt="email">
+                                <p class="total">
+                                    {{ $dokumen_aset }}
+                                </p>
+                            </div>
+                            <div class="title">
+                                <p>Dokumen Aset</p>
+                            </div>
+                            <div class="btn-next">
+                                <a href="/user/dokumen_aset">See More Document</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="kartu">
-                        <div class="logo">
-                            <img src="{{ asset('template/assets/images/email.png') }}" alt="email">
-                            <p class="total">
-                                48
-                            </p>
+                        <div class="kartu">
+                            <div class="logo-dash">
+                                <img src="{{ asset('template/assets/images/email.png') }}" alt="email">
+                                <p class="total">
+                                    {{ $dokumen_keuangan }}
+                                </p>
+                            </div>
+                            <div class="title">
+                                <p>Dokumen Keuangan</p>
+                            </div>
+                            <div class="btn-next">
+                                <a href="/user/dokumen_keuangan">See More Document</a>
+                            </div>
                         </div>
-                        <div class="title">
-                            <a href="/user/dokumen_surat">Dokumen Surat</a>
+                        <div class="kartu">
+                            <div class="logo-dash">
+                                <img src="{{ asset('template/assets/images/email.png') }}" alt="email">
+                                <p class="total">
+                                    {{ $dl }}
+                                </p>
+                            </div>
+                            <div class="title">
+                                <p>Dokumen Lain-lain</p>
+                            </div>
+                            <div class="btn-next">
+                                <a href="/user/dokumen_lain">See More Document</a>
+                            </div>
                         </div>
                     </div>
                 </div>

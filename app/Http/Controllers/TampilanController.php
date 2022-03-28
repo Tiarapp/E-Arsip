@@ -29,11 +29,19 @@ class TampilanController extends Controller
      */
     public function userIndex()
     {
-        $dokumen_surat = dokumen::where('jns_dokumen_id', '=', 1)
-                        ->get();
-        $ds = count($dokumen_surat);
+        $dokumen_surat = count(dokumen::where('jns_dokumen_id', '=', 1)
+                        ->get());        
+        $dokumen_aset = count(dokumen::where('jns_dokumen_id', '=', 2)
+                        ->get());
+        $dokumen_keuangan = count(dokumen::where('jns_dokumen_id', '=', 3)
+                            ->get());
+        $dl = count(dokumen::where('jns_dokumen_id', '!=', 1)
+                            ->where('jns_dokumen_id', '!=', 2)
+                            ->where('jns_dokumen_id', '!=', 3)
+                            ->get());
+        // dd($dl); 
 
-        return view('user.index', compact('ds'));
+        return view('user.index', compact('dokumen_surat', 'dokumen_aset', 'dokumen_keuangan', 'dl'));
     }
 
     /**
