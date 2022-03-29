@@ -9,18 +9,18 @@
 @endsection
 
 @section('page_awal')
-    <a href="#">Data</a>
+    <a href="#">Jenis Dokumen</a>
 @endsection
 
-@section('page_aktif')
+{{-- @section('page_aktif')
     data klien
-@endsection
+@endsection --}}
 
 @section('page_title')
     @php
         $id=0;
     @endphp
-    Data Kllien <a href="/user/jenis_dokumen_add/{{$id}}"><button>+</button></a>
+    Data Jenis Dokumen <a href="/user/jenis_dokumen_add/{{$id}}"><button>+</button></a>
 @endsection
 
 @section('conten')
