@@ -11,7 +11,6 @@ class RegisterController extends Controller
 {
     public function create()
     {
-        // dd(Hash::make('123456'));
         return view('auth.register');
         
     }
@@ -38,19 +37,12 @@ class RegisterController extends Controller
             'level' => 'user'
         ]);
 
-        // dd($user);   
-
         auth()->login($user);
 
-        // dd(Auth::check());
-
         if (Auth::check()) {
-            // dd(Auth::user()->level == "user");
             if (Auth::user()->level == "user") {
                 return redirect('/user/jenis_dokumen');
             }
-
-            // return redirect()->route('user.dashboard');
 
         } else {
             return redirect()->route('login')->withInput()->withErrors(['error' => 'Username atau Password tidak ditemukan!']);

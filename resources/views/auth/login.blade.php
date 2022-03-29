@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{asset('/template/assets/images/logo-jt.png')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/template/assets/css/login.css')}}">
     <title>Login</title>
     <style>
@@ -15,12 +16,12 @@
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-        @endif
-        @error('error')
+    @endif
+    @error('error')
         <div class="alert alert-danger">
             {{ $message }}
         </div>
-        @enderror
+    @enderror
     <div class="wrapper">
         <form method="POST" action="{{ route('login') }}" class="login">
         @csrf
