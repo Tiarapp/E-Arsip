@@ -52,7 +52,7 @@ class UserController extends Controller
                 $foto = $request->file('foto');
                 $nama_foto = $request->nama."-".$foto->getClientOriginalName();
             } else {
-                $nama_foto=null;
+                $nama_foto=$request->foto2;
             }
 
 
